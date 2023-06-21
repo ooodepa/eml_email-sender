@@ -19,11 +19,13 @@ if (isProd) {
   });
 
   if (isProd) {
+    mainWindow.setMenuBarVisibility(false);
     await mainWindow.loadURL('app://./home.html');
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.setMenuBarVisibility(false);
+    // mainWindow.webContents.openDevTools();
   }
 })();
 

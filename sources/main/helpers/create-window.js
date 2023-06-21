@@ -1,7 +1,4 @@
-import {
-  screen,
-  BrowserWindow,
-} from 'electron';
+import { screen, BrowserWindow } from 'electron';
 import Store from 'electron-store';
 
 export default function createWindow(windowName, options) {
@@ -41,13 +38,13 @@ export default function createWindow(windowName, options) {
     const bounds = screen.getPrimaryDisplay().bounds;
     return Object.assign({}, defaultSize, {
       x: (bounds.width - defaultSize.width) / 2,
-      y: (bounds.height - defaultSize.height) / 2
+      y: (bounds.height - defaultSize.height) / 2,
     });
   };
 
-  const ensureVisibleOnSomeDisplay = (windowState) => {
+  const ensureVisibleOnSomeDisplay = windowState => {
     const visible = screen.getAllDisplays().some(display => {
-      return windowWithinBounds(windowState, display.bounds)
+      return windowWithinBounds(windowState, display.bounds);
     });
     if (!visible) {
       // Window is partially or fully not visible now.
@@ -79,4 +76,4 @@ export default function createWindow(windowName, options) {
   win.on('close', saveState);
 
   return win;
-};
+}
